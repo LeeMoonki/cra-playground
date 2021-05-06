@@ -45,3 +45,16 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Lint, Prettier
+
+- [typescript-eslint Getting Started](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md)
+- [Usage with prettier](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md#usage-with-prettier)
+- [eslint-plugin-prettier recommended-configuration](https://github.com/prettier/eslint-plugin-prettier#recommended-configuration)
+- [Configuring ESLint](https://eslint.org/docs/user-guide/configuring/)
+- [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)
+- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
+- [prettier with Git hooks](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md#usage-with-prettier)
+
+## Test, Jest
+- [test configuration](https://create-react-app.dev/docs/running-tests/#configuration)
