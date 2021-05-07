@@ -1,9 +1,9 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).<br>
 `yarn create react-app [project name] --template typescript`
 
-## Available Scripts
+## **Available Scripts**
 
 In the project directory, you can run:
 
@@ -40,13 +40,13 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## **Learn More**
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-## Lint, Prettier
+## **Lint, Prettier**
 
 - [typescript-eslint Getting Started](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md)
 - [Usage with prettier](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md#usage-with-prettier)
@@ -56,5 +56,15 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
 - [prettier with Git hooks](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md#usage-with-prettier)
 
-## Test, Jest
+ ### ESLint가 VSCode에서 동작을 안 한다면 다음 설정을 해줍니다. [React CRA with typescript not working with eslint](https://stackoverflow.com/questions/58264433/react-cra-with-typescript-not-working-with-eslint)
+ ```json
+ "eslint.validate": [
+   "javascript",
+   "javascriptreact",
+   "typescript",
+   "typescriptreact"
+ ]
+ ```
+
+## **Test, Jest**
 - [test configuration](https://create-react-app.dev/docs/running-tests/#configuration)

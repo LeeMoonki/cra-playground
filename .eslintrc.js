@@ -6,12 +6,11 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  ignorePatterns: ['node_modules/*', '.*'],
   parserOptions: { ecmaVersion: 8 },
-  extends: ['eslint:recommended'],
+  extends: ['eslint:recommended',],
   overrides: [
     {
-      files: ['src/**/*.ts', 'src/**.*.tsx'],
+      files: ['src/**/*.ts?(x)'],
       parser: '@typescript-eslint/parser',
       plugins: ['@typescript-eslint'],
       env: {
@@ -29,8 +28,12 @@ module.exports = {
         'prettier',
       ],
       rules: {
-        // '@typescript-eslint/explicit-module-boundary-types': 'error',
         'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+
+        'no-console': ['error', { allow: ['warn', 'error'] }],
+        'eqeqeq': 'off',
       },
     }
   ]
