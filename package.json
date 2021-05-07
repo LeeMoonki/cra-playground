@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.1.2",
+    "@emotion/react": "^11.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -17,10 +19,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false --passWithNoTests",
-    "test:watch": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test --watchAll=false --passWithNoTests",
+    "test:watch": "craco test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "eslint": "eslint --fix",
@@ -45,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@emotion/babel-preset-css-prop": "^11.2.0",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "eslint": "^7.25.0",
@@ -63,6 +66,8 @@
     ]
   },
   "jest": {
-    "testMatch": ["**/__tests__/**/*.[jt]s?(x)"]
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)"
+    ]
   }
 }

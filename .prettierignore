@@ -4,3 +4,5 @@ public
 *.json
 *.lock
 *.md
+*.config.js
+*.css

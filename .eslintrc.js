@@ -30,9 +30,10 @@ module.exports = {
       rules: {
         'prettier/prettier': ['error', {}, { usePrettierrc: true }],
 
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off', // react component는 반환값을 설정하지 않아도 됩니다.
+        'react/react-in-jsx-scope': 'off', // v17 이후 부턴 React를 반드시 import하지 않아도 됩니다.
 
-        'no-console': ['error', { allow: ['warn', 'error'] }],
+        'no-console': ['off', { allow: ['warn', 'error'] }],
         'eqeqeq': 'off',
       },
     }

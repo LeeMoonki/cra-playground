@@ -68,6 +68,26 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## **Test, Jest**
 - [test configuration](https://create-react-app.dev/docs/running-tests/#configuration)
+- [react testing recipes](https://ko.reactjs.org/docs/testing-recipes.html)
+- [react-testing-library API](https://testing-library.com/docs/react-testing-library/api)
 
 ### 테스트 파일 (__tests__/*.tsx?)에서 tsconfig를 적용하지 않기
 cra의 특징은 `react-scripts`를 실행할 때마다 `tsconfig.json`을 overriding 한다는 것입니다. 따라서 테스트 파일에도 다소 억지스러운 설정이 적용됩니다. 따라서 `tsconfigExtends.json`에서 테스트 디렉터리를 제외시키도록 설정해 `tsconfig.json`에서 `extends` 하도록 합니다.
+
+## **emotion, typescript**
+- [emotion typescript](https://emotion.sh/docs/typescript)
+- [craco](https://github.com/gsoft-inc/craco)
+- [cra+emotion 구축하기](https://velog.io/@mizukikawaii/CRA-Emotion-Storybook-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0)
+
+### 적용 과정
+1. `yarn add @emotion/react @craco/craco`
+2. `yarn add -D @emotion/babel-preset-css-prop`
+3. `package.json`의 `scripts`에서 `react-scripts` 부분을 `craco`로 수정
+4. `craco.config.js`를 생성하고 다음과 같이 설정
+```js
+module.exports = {
+  babel: {
+    presets: ['@emotion/babel-preset-css-prop']
+  }
+}
+```
