@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
+    "test": "react-scripts test --watchAll=false --passWithNoTests",
     "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
@@ -61,5 +61,8 @@
       "yarn eslint",
       "yarn prettier"
     ]
+  },
+  "jest": {
+    "testMatch": ["**/__tests__/**/*.[jt]s?(x)"]
   }
 }

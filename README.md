@@ -68,3 +68,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## **Test, Jest**
 - [test configuration](https://create-react-app.dev/docs/running-tests/#configuration)
+
+### 테스트 파일 (__tests__/*.tsx?)에서 tsconfig를 적용하지 않기
+cra의 특징은 `react-scripts`를 실행할 때마다 `tsconfig.json`을 overriding 한다는 것입니다. 따라서 테스트 파일에도 다소 억지스러운 설정이 적용됩니다. 따라서 `tsconfigExtends.json`에서 테스트 디렉터리를 제외시키도록 설정해 `tsconfig.json`에서 `extends` 하도록 합니다.
