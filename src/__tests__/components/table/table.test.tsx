@@ -17,6 +17,12 @@ describe('Table 컴포넌트', () => {
 
     const { container } = render(<Table header={header} rows={rows} />);
 
-    expect(container.querySelectorAll('table tr').length).toBe(rows.length);
+    const $rows = container.querySelectorAll('table tr');
+    expect($rows.length).toBe(rows.length);
+
+    const firstRow = rows[0];
+    const $firstRow = $rows[0].querySelectorAll('td');
+    expect($firstRow.length).toBe(Object.entries(firstRow).length);
+    expect($firstRow[0].textContent).toBe(firstRow.col1);
   });
 });
