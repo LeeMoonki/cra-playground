@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 export interface BaseTableHeader {
   name: string;
   key: string;
@@ -12,6 +14,11 @@ function Table<TableHeader extends BaseTableHeader = BaseTableHeader>({
     [key in typeof header[number]['key']]: string;
   }[];
 }) {
+  const headerKeys = useMemo<typeof header[number]['key'][]>(
+    () => header.map((h) => h.key as TableHeader['key']),
+    [header]
+  );
+
   if (header.length === 0 || rows.length === 0) {
     return null;
   }
@@ -29,10 +36,13 @@ function Table<TableHeader extends BaseTableHeader = BaseTableHeader>({
         {rows.map((row, index) => {
           return (
             <tr key={index}>
-              {row &&
-                Object.entries<string>(row).map(([, v], tdindex) => {
-                  return <td key={`${index}${tdindex}`}>{v}</td>;
-                })}
+              {headerKeys.map((headerKey, tdindex) => {
+                return (
+                  <td key={`${index}${tdindex}`}>
+                    <span>{row[headerKey]}</span>
+                  </td>
+                );
+              })}
             </tr>
           );
         })}
