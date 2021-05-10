@@ -19,10 +19,23 @@ describe('Table 컴포넌트', () => {
       ];
     });
 
+    it('만약 header나 rows가 비어있는 배열이라면 null을 반환해서 렌더링하지 않습니다.', () => {
+      const { container } = render(<Table header={[]} rows={[]} />);
+
+      expect(container.querySelector('table')).toBeNull();
+    });
+
+    it('header 렌더링을 확인합니다.', () => {
+      const { container } = render(<Table header={header} rows={rows} />);
+
+      const $headers = container.querySelectorAll('thead th');
+      expect($headers.length).toBe(header.length);
+    });
+
     it('rows 렌더링을 확인합니다.', () => {
       const { container } = render(<Table header={header} rows={rows} />);
 
-      const $rows = container.querySelectorAll('table tr');
+      const $rows = container.querySelectorAll('tbody tr');
       expect($rows.length).toBe(rows.length);
 
       const firstRow = rows[0];
