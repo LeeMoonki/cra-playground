@@ -1,23 +1,44 @@
-import Table from './components/table';
+import { Link, Route } from 'react-router-dom';
+
+import HomePage from './pages/Home';
+import AboutPage from './pages/About';
+import PostsPage from './pages/Posts';
+import CardsPage from './pages/Cards';
 
 function App() {
-  const header = [
-    { name: 'col1', key: 'col1' },
-    { name: 'col2', key: 'col2' },
-    { name: 'col3', key: 'col3' },
-    { name: 'col4', key: 'col4' },
-  ];
-  const rows = [
-    { col1: 'col1-row1', col2: 'col2-row1', col3: 'col3-row1', col4: 'col4-row1' },
-    { col1: 'col1-row2', col2: 'col2-row2', col3: 'col3-row2', col4: 'col4-row2' },
-    { col1: 'col1-row3', col2: 'col2-row3', col3: 'col3-row3', col4: 'col4-row3' },
-  ];
-
   return (
     <div className="App">
-      <h1>Hello World</h1>
-      <h2>Using Emotion</h2>
-      <Table header={header} rows={rows} />
+      <header>
+        <h1>Hello CRA</h1>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Go To Home</Link>
+            </li>
+            <li>
+              <Link to="/about">Go To About</Link>
+            </li>
+            <li>
+              <Link to="/posts/1">Go To Post1</Link>
+            </li>
+            <li>
+              <Link to="/cards">Go To Cards</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <Route exact path="/">
+        <HomePage />
+      </Route>
+      <Route path="/about">
+        <AboutPage />
+      </Route>
+      <Route path="/posts/:postId">
+        <PostsPage />
+      </Route>
+      <Route path="/cards">
+        <CardsPage />
+      </Route>
     </div>
   );
 }
