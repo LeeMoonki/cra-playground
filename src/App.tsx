@@ -43,7 +43,7 @@ function App() {
       <Route path="/cards">
         <CardsPage />
       </Route>
-      <Route path="signup">
+      <Route path="/signup">
         <SignupPage />
       </Route>
     </div>
