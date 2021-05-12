@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    "jsxImportSource": "@emotion/react"
+    "jsxImportSource": "@emotion/react",
+    "typeRoots": ["./node_modules/@types", "./src/@types"]
   },
   "exclude": ["**/__tests__"]
 }
