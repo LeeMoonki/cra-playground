@@ -4,6 +4,7 @@ import HomePage from './pages/Home';
 import AboutPage from './pages/About';
 import PostsPage from './pages/Posts';
 import CardsPage from './pages/Cards';
+import SignupPage from './pages/Signup';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
             <li>
               <Link to="/cards">Go To Cards</Link>
             </li>
+            <li>
+              <Link to="/signup">Go To Signup</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -38,6 +42,9 @@ function App() {
       </Route>
       <Route path="/cards">
         <CardsPage />
+      </Route>
+      <Route path="signup">
+        <SignupPage />
       </Route>
     </div>
   );
