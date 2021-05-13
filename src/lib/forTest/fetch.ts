@@ -22,8 +22,9 @@ export type Fetch = {
   mockClear: () => jest.Mock<PromiseFetchResponse, []>;
 };
 
-export const fetchMock = (function (global1) {
-  const global = global1;
+export const fetchfy = (fetch: any) => (fetch as unknown) as Fetch;
+
+export const mockFetch = (function () {
   const queue = new Queue();
 
   // fetch의 첫 번째 then의 값을 mocking합니다.
@@ -35,60 +36,61 @@ export const fetchMock = (function (global1) {
     },
   };
 
-  const mockedFetch = jest.fn(function () {
-    const fetchGuide = queue.dequeue();
+  return (window: any) => {
+    const mockedFetch = jest.fn(function () {
+      const fetchGuide = queue.dequeue();
 
-    if (fetchGuide) {
-      if (fetchGuide.resolve) {
-        return Promise.resolve<FetchResponse>({
-          ...fetchResponseExceptJSON,
-          json: function () {
-            return Promise.resolve(fetchGuide.data);
-          },
-        });
+      if (fetchGuide) {
+        if (fetchGuide.resolve) {
+          return Promise.resolve<FetchResponse>({
+            ...fetchResponseExceptJSON,
+            json: function () {
+              return Promise.resolve(fetchGuide.data);
+            },
+          });
+        } else {
+          return Promise.reject(fetchGuide.data);
+        }
       } else {
-        return Promise.reject(fetchGuide.data);
+        throw new Error('mocking한 fetch보다 더 많은 fetch가 호출되었습니다.');
       }
-    } else {
-      throw new Error('mocking한 fetch보다 더 많은 fetch가 호출되었습니다.');
-    }
-  });
-  const mockClear = mockedFetch.mockClear;
+    });
 
-  /** fetch.mockResolve 앞에 실행되는 fetch를 설정합니다. */
-  mockedFetch.mockResolve = (data) => {
-    let dataArray = [];
-    if (data instanceof Array) {
-      dataArray = data;
-    } else {
-      dataArray = [data];
-    }
+    const mockClear = mockedFetch.mockClear;
 
-    for (const d of dataArray) {
-      queue.enqueue({ resolve: true, data: d });
-    }
+    /** fetch.mockResolve 앞에 실행되는 fetch를 설정합니다. */
+    mockedFetch.mockResolve = (data) => {
+      let dataArray = [];
+      if (data instanceof Array) {
+        dataArray = data;
+      } else {
+        dataArray = [data];
+      }
+
+      for (const d of dataArray) {
+        queue.enqueue({ resolve: true, data: d });
+      }
+    };
+
+    /** fetch.mockResolve 앞에 실행되는 fetch를 설정합니다. */
+    mockedFetch.mockReject = (error) => {
+      let errorArray = [];
+      if (error instanceof Array) {
+        errorArray = error;
+      } else {
+        errorArray = [error];
+      }
+
+      for (const e of errorArray) {
+        queue.enqueue({ resolve: false, data: e });
+      }
+    };
+
+    /** fetch의 mock history를 clear 합니다. */
+    mockedFetch.mockClear = mockClear;
+
+    window.fetch = mockedFetch;
+
+    return mockedFetch as Fetch;
   };
-
-  /** fetch.mockResolve 앞에 실행되는 fetch를 설정합니다. */
-  mockedFetch.mockReject = (error) => {
-    let errorArray = [];
-    if (error instanceof Array) {
-      errorArray = error;
-    } else {
-      errorArray = [error];
-    }
-
-    for (const e of errorArray) {
-      queue.enqueue({ resolve: false, data: e });
-    }
-  };
-
-  /** fetch의 mock history를 clear 합니다. */
-  mockedFetch.mockClear = mockClear;
-
-  return {
-    init: () => {
-      (global.fetch as any) = mockedFetch;
-    },
-  };
-})(window);
+})();
