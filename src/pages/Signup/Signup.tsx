@@ -10,8 +10,16 @@ function Signup() {
         <section>
           <label htmlFor="id">아이디</label>
           <div>
-            <input id="id" type="text" value={id} onChange={({ target }) => setId(target.value)} />
-            <button type="button">중복확인</button>
+            <input
+              data-testid="inputId"
+              id="id"
+              type="text"
+              value={id}
+              onChange={({ target }) => setId(target.value)}
+            />
+            <button data-testid="buttonDupcheck" type="button" disabled={!id}>
+              중복확인
+            </button>
           </div>
         </section>
       </form>
