@@ -23,7 +23,7 @@ describe('Signup page', () => {
       // screen은 query가 document.body에 미리 바운딩된 객체입니다.
       render(<SignupPage />);
 
-      const $input = screen.getByLabelText('ID') as HTMLInputElement;
+      const $input = screen.getByLabelText('아이디') as HTMLInputElement;
       const $button = screen.getByRole('button', { name: '중복확인' });
 
       expect($input.value).toBe('');

@@ -10,7 +10,6 @@ function Signup() {
         <section>
           <label htmlFor="id">아이디</label>
           <div>
-            <label htmlFor="id">ID</label>
             <input
               data-testid="inputId"
               id="id"
