@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 function Signup() {
   const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
 
   return (
     <div>
@@ -21,6 +23,26 @@ function Signup() {
               중복확인
             </button>
           </div>
+        </section>
+        <section>
+          <label htmlFor="password">비밀번호</label>
+          <input
+            data-testid="inputPassword"
+            id="password"
+            type="password"
+            value={password}
+            onChange={({ target }) => setPassword(target.value)}
+          />
+        </section>
+        <section>
+          <label htmlFor="passwordConfirm">비밀번호 확인</label>
+          <input
+            data-testid="inputPasswordConfirm"
+            id="passwordConfirm"
+            type="password"
+            value={passwordConfirm}
+            onChange={({ target }) => setPasswordConfirm(target.value)}
+          />
         </section>
       </form>
     </div>
