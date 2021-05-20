@@ -44,5 +44,18 @@ describe('Signup page', () => {
 
       expect($passwordError).toBeNull();
     });
+
+    it('만약 적절한 형식의 비밀번호가 아니라면 비밀번호 에러를 노출합니다.', () => {
+      render(<SignupPage />);
+
+      const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+
+      fireEvent.change($input, { target: { value: 'abcd' } });
+
+      const $passwordError = screen.queryByTestId('password-error');
+
+      expect($input.value).toBe('abcd');
+      expect($passwordError).not.toBeNull();
+    });
   });
 });
