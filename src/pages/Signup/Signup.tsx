@@ -33,6 +33,7 @@ function Signup() {
             value={password}
             onChange={({ target }) => setPassword(target.value)}
           />
+          {password && <span data-testid="password-error">적절한 비밀번호 형식이 아닙니다.</span>}
         </section>
         <section>
           <label htmlFor="passwordConfirm">비밀번호 확인</label>

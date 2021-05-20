@@ -5,7 +5,7 @@ describe('Signup page', () => {
   afterEach(cleanup);
 
   describe('ID', () => {
-    test('아이디를 입력하지 않으면 중복확인 버튼이 비활성화 되고 입력하면 활성화 됩니다.', async () => {
+    it('아이디를 입력하지 않으면 중복확인 버튼이 비활성화 되고 입력하면 활성화 됩니다.', async () => {
       const { getByTestId } = render(<SignupPage />);
       const $input = getByTestId('inputId');
       const $button = getByTestId('buttonDupcheck');
@@ -19,7 +19,7 @@ describe('Signup page', () => {
       expect($button).not.toBeDisabled();
     });
 
-    test('"아이디를 입력하지 않으면 중복확인 버튼이 비활성화 되고 입력하면 활성화 됩니다." 테스트를 Guiding Principle에 따라 작성합니다.', () => {
+    it('"아이디를 입력하지 않으면 중복확인 버튼이 비활성화 되고 입력하면 활성화 됩니다." 테스트를 Guiding Principle에 따라 작성합니다.', () => {
       // screen은 query가 document.body에 미리 바운딩된 객체입니다.
       render(<SignupPage />);
 
@@ -33,6 +33,16 @@ describe('Signup page', () => {
 
       expect($input.value).toBe('inserted id');
       expect($button).not.toBeDisabled();
+    });
+  });
+
+  describe('Password', () => {
+    it('처음 페이지에 접근하면 비밀번호의 에러는 노출되지 않습니다.', () => {
+      render(<SignupPage />);
+
+      const $passwordError = screen.queryByTestId('password-error');
+
+      expect($passwordError).toBeNull();
     });
   });
 });
