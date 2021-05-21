@@ -6,6 +6,7 @@ describe('Signup page', () => {
   const buttonDup = '중복확인';
   const labelPassword = '비밀번호';
   const labelPasswordConfirm = '비밀번호 확인';
+  const buttonSignup = '회원가입';
 
   afterEach(cleanup);
 
@@ -120,6 +121,30 @@ describe('Signup page', () => {
 
         expect($passwordError).toBeNull();
       });
+    });
+  });
+
+  describe('회원가입 버튼 활성화', () => {
+    // 조건을 미리 준비해놓고 각 테스트 케이스마다 적절한 조건 하나씩만 적용해 테스트합니다.
+    const properId = 'abc',
+      improperId = '';
+    const properPassword = 'abcdefg12345',
+      improperPassword = '123';
+
+    it('아이디가 적절하지 않다면 회원가입 버튼을 비활성화 합니다.', () => {
+      render(<SignupPage />);
+
+      const $input = screen.getByLabelText(labelId) as HTMLInputElement;
+      const $inputPassword = screen.getByLabelText(labelPassword) as HTMLInputElement;
+      const $inputConfirm = screen.getByLabelText(labelPasswordConfirm) as HTMLInputElement;
+
+      fireEvent.change($input, { target: { value: improperId } });
+      fireEvent.change($inputPassword, { target: { value: properPassword } });
+      fireEvent.change($inputConfirm, { target: { value: properPassword } });
+
+      const $button = screen.getByRole('button', { name: buttonSignup });
+
+      expect($button).toBeDisabled();
     });
   });
 });

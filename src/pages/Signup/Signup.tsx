@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { validatePassword } from '../../lib/validation/password';
 
 function Signup() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+
+  const [isDisableSubmit, setIsDisableSubmit] = useState(true);
+  useEffect(() => {
+    if (!id.trim()) {
+      setIsDisableSubmit(true);
+    }
+  }, [id]);
 
   return (
     <div>
@@ -51,7 +58,9 @@ function Signup() {
             <span data-testid="password-confirm-error">입력한 비밀번호와 다릅니다.</span>
           )}
         </section>
-        <button type="submit">회원가입</button>
+        <button type="submit" disabled={isDisableSubmit}>
+          회원가입
+        </button>
       </form>
     </div>
   );
