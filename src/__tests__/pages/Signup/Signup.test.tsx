@@ -63,12 +63,13 @@ describe('Signup page', () => {
         render(<SignupPage />);
 
         const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+        const password = 'abcd123456678';
 
-        fireEvent.change($input, { target: { value: 'abcd123456678' } });
+        fireEvent.change($input, { target: { value: password } });
 
         const $passwordError = screen.queryByTestId('password-error');
 
-        expect($input.value).toBe('abcd123456678');
+        expect($input.value).toBe(password);
         expect($passwordError).toBeNull();
       });
     });
@@ -88,8 +89,11 @@ describe('Signup page', () => {
         const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
         const $inputConfirm = screen.getByLabelText('비밀번호 확인') as HTMLInputElement;
 
-        fireEvent.change($input, { target: { value: 'abcd123456678' } });
-        fireEvent.change($inputConfirm, { target: { value: 'abcd12345667' } });
+        const password = 'abcd123456678';
+        const passwordConrifm = 'abcd12345667';
+
+        fireEvent.change($input, { target: { value: password } });
+        fireEvent.change($inputConfirm, { target: { value: passwordConrifm } });
 
         const $passwordError = screen.queryByTestId('password-confirm-error');
 
@@ -102,8 +106,10 @@ describe('Signup page', () => {
         const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
         const $inputConfirm = screen.getByLabelText('비밀번호 확인') as HTMLInputElement;
 
-        fireEvent.change($input, { target: { value: 'abcd123456678' } });
-        fireEvent.change($inputConfirm, { target: { value: 'abcd123456678' } });
+        const password = 'abcd12345667';
+
+        fireEvent.change($input, { target: { value: password } });
+        fireEvent.change($inputConfirm, { target: { value: password } });
 
         const $passwordError = screen.queryByTestId('password-confirm-error');
 
