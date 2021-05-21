@@ -37,7 +37,7 @@ describe('Signup page', () => {
   });
 
   describe('Password', () => {
-    it('처음 페이지에 접근하면 비밀번호의 에러는 노출되지 않습니다.', () => {
+    it('처음 페이지에 접근하면 비밀번호의 에러를 노출하지 않습니다.', () => {
       render(<SignupPage />);
 
       const $passwordError = screen.queryByTestId('password-error');
@@ -56,6 +56,19 @@ describe('Signup page', () => {
 
       expect($input.value).toBe('abcd');
       expect($passwordError).not.toBeNull();
+    });
+
+    it('만약 적절한 형식의 비밀번호라면 비밀번호 에러를 노출하지 않습니다.', () => {
+      render(<SignupPage />);
+
+      const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+
+      fireEvent.change($input, { target: { value: 'abcd123456678' } });
+
+      const $passwordError = screen.queryByTestId('password-error');
+
+      expect($input.value).toBe('abcd123456678');
+      expect($passwordError).toBeNull();
     });
   });
 });
