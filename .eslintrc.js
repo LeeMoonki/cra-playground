@@ -35,6 +35,8 @@ module.exports = {
 
         'no-console': ['off', { allow: ['warn', 'error'] }],
         'eqeqeq': 'off',
+
+        'react/prop-types': 'off',
       },
     }
   ]

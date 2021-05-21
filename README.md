@@ -104,3 +104,56 @@ module.exports = {
 ```ts
 /// <reference types="@emotion/react/types/css-prop" />
 ```
+
+## **storybook**
+- [Install Storybook](https://storybook.js.org/docs/react/get-started/install)
+- [Can't get emotion's css prop working inside storybook #7540](https://github.com/storybookjs/storybook/issues/7540)
+- [Can't get emotion's css prop working inside storybook #7540#issuecomment-571381641](https://github.com/storybookjs/storybook/issues/7540#issuecomment-571381641)
+- [Can't get emotion's css prop working inside storybook #7540#issuecomment-779707222](https://github.com/storybookjs/storybook/issues/7540#issuecomment-779707222)
+- [cra+emotion 구축하기](https://velog.io/@mizukikawaii/CRA-Emotion-Storybook-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0)
+
+### 적용과정
+1. `npx sb init`
+2. CRA가 storybook에서 사용하는 babel-loader와 중복 및 충돌한다고 경고를 보내는 경우에 `.env`에 `SKIP_PREFLIGHT_CHECK=true` 세팅
+3. 위 내용들을 참고해 다음과 같이 `.storybook/main.js`를 수정
+```js
+const path = require('path');
+const toPath = _path => path.join(process.cwd(), _path);
+
+module.exports = {
+  "stories": [
+    "../src/**/*.stories.mdx",
+    "../src/**/*.stories.@(js|jsx|ts|tsx)"
+  ],
+  "addons": [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/preset-create-react-app"
+  ],
+  webpackFinal: async config => {
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      loader: require.resolve('babel-loader'),
+      options: {
+        presets: [
+          ['react-app', { flow: false, typescript: true }],
+          require.resolve('@emotion/babel-preset-css-prop')
+        ],
+      },
+    });
+
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@emotion/core': toPath('node_modules/@emotion/react'),
+          '@emotion/styled': toPath('node_modules/@emotion/styled'),
+          'emotion-theming': toPath('node_modules/@emotion/react'),
+        },
+      },
+    };
+  },
+}
+```

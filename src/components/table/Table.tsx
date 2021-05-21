@@ -1,19 +1,22 @@
 import { useMemo } from 'react';
+import { css } from '@emotion/react';
 
 export interface BaseTableHeader {
   name: string;
   key: string;
 }
 
+export interface TableProps<TableHeader extends BaseTableHeader = BaseTableHeader> {
+  header: TableHeader[];
+  rows: {
+    [key: string]: string;
+  }[];
+}
+
 function Table<TableHeader extends BaseTableHeader = BaseTableHeader>({
   header,
   rows,
-}: {
-  header: TableHeader[];
-  rows: {
-    [key in typeof header[number]['key']]: string;
-  }[];
-}) {
+}: TableProps) {
   const headerKeys = useMemo<typeof header[number]['key'][]>(
     () => header.map((h) => h.key as TableHeader['key']),
     [header]
@@ -24,7 +27,7 @@ function Table<TableHeader extends BaseTableHeader = BaseTableHeader>({
   }
 
   return (
-    <table>
+    <table css={table}>
       <thead>
         <tr>
           {header.map((h, index) => {
@@ -50,5 +53,9 @@ function Table<TableHeader extends BaseTableHeader = BaseTableHeader>({
     </table>
   );
 }
+
+const table = css`
+  display: block;
+`;
 
 export default Table;
