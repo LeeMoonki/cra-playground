@@ -37,38 +37,78 @@ describe('Signup page', () => {
   });
 
   describe('Password', () => {
-    it('처음 페이지에 접근하면 비밀번호의 에러를 노출하지 않습니다.', () => {
-      render(<SignupPage />);
+    describe('비밀번호', () => {
+      it('비밀번호가 비어있다면 에러 메세지를 노출하지 않습니다.', () => {
+        render(<SignupPage />);
 
-      const $passwordError = screen.queryByTestId('password-error');
+        const $passwordError = screen.queryByTestId('password-error');
 
-      expect($passwordError).toBeNull();
+        expect($passwordError).toBeNull();
+      });
+
+      it('만약 적절한 형식의 비밀번호가 아니라면 비밀번호 에러를 노출합니다.', () => {
+        render(<SignupPage />);
+
+        const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+
+        fireEvent.change($input, { target: { value: 'abcd' } });
+
+        const $passwordError = screen.queryByTestId('password-error');
+
+        expect($input.value).toBe('abcd');
+        expect($passwordError).not.toBeNull();
+      });
+
+      it('만약 적절한 형식의 비밀번호라면 비밀번호 에러를 노출하지 않습니다.', () => {
+        render(<SignupPage />);
+
+        const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+
+        fireEvent.change($input, { target: { value: 'abcd123456678' } });
+
+        const $passwordError = screen.queryByTestId('password-error');
+
+        expect($input.value).toBe('abcd123456678');
+        expect($passwordError).toBeNull();
+      });
     });
 
-    it('만약 적절한 형식의 비밀번호가 아니라면 비밀번호 에러를 노출합니다.', () => {
-      render(<SignupPage />);
+    describe('비밀번호 확인', () => {
+      it('비밀번호 확인이 비어있다면 에러 메세지를 노출하지 않습니다.', () => {
+        render(<SignupPage />);
 
-      const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+        const $passwordError = screen.queryByTestId('password-confirm-error');
 
-      fireEvent.change($input, { target: { value: 'abcd' } });
+        expect($passwordError).toBeNull();
+      });
 
-      const $passwordError = screen.queryByTestId('password-error');
+      it('기존 비밀번호와 다르다면 에러 메세지를 노출합니다.', () => {
+        render(<SignupPage />);
 
-      expect($input.value).toBe('abcd');
-      expect($passwordError).not.toBeNull();
-    });
+        const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+        const $inputConfirm = screen.getByLabelText('비밀번호 확인') as HTMLInputElement;
 
-    it('만약 적절한 형식의 비밀번호라면 비밀번호 에러를 노출하지 않습니다.', () => {
-      render(<SignupPage />);
+        fireEvent.change($input, { target: { value: 'abcd123456678' } });
+        fireEvent.change($inputConfirm, { target: { value: 'abcd12345667' } });
 
-      const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+        const $passwordError = screen.queryByTestId('password-confirm-error');
 
-      fireEvent.change($input, { target: { value: 'abcd123456678' } });
+        expect($passwordError).not.toBeNull();
+      });
 
-      const $passwordError = screen.queryByTestId('password-error');
+      it('기존 비밀번호와 같다면 에러 메세지를 노출하지 않습니다.', () => {
+        render(<SignupPage />);
 
-      expect($input.value).toBe('abcd123456678');
-      expect($passwordError).toBeNull();
+        const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+        const $inputConfirm = screen.getByLabelText('비밀번호 확인') as HTMLInputElement;
+
+        fireEvent.change($input, { target: { value: 'abcd123456678' } });
+        fireEvent.change($inputConfirm, { target: { value: 'abcd123456678' } });
+
+        const $passwordError = screen.queryByTestId('password-confirm-error');
+
+        expect($passwordError).toBeNull();
+      });
     });
   });
 });

@@ -47,6 +47,9 @@ function Signup() {
             value={passwordConfirm}
             onChange={({ target }) => setPasswordConfirm(target.value)}
           />
+          {passwordConfirm && password !== passwordConfirm && (
+            <span data-testid="password-confirm-error">입력한 비밀번호와 다릅니다.</span>
+          )}
         </section>
       </form>
     </div>
