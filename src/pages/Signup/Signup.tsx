@@ -10,6 +10,8 @@ function Signup() {
   useEffect(() => {
     if (!id.trim()) {
       setIsDisableSubmit(true);
+    } else {
+      setIsDisableSubmit(false);
     }
   }, [id]);
 
