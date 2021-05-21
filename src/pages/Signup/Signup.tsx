@@ -10,10 +10,14 @@ function Signup() {
   useEffect(() => {
     if (!id.trim()) {
       setIsDisableSubmit(true);
+    } else if (!validatePassword(password)) {
+      setIsDisableSubmit(true);
+    } else if (password !== passwordConfirm) {
+      setIsDisableSubmit(true);
     } else {
       setIsDisableSubmit(false);
     }
-  }, [id]);
+  }, [id, password, passwordConfirm]);
 
   return (
     <div>

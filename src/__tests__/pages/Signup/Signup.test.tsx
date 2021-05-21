@@ -147,6 +147,38 @@ describe('Signup page', () => {
       expect($button).toBeDisabled();
     });
 
+    it('비밀번호가 적절하지 않다면 회원가입 버튼을 비활성화 합니다.', () => {
+      render(<SignupPage />);
+
+      const $input = screen.getByLabelText(labelId) as HTMLInputElement;
+      const $inputPassword = screen.getByLabelText(labelPassword) as HTMLInputElement;
+      const $inputConfirm = screen.getByLabelText(labelPasswordConfirm) as HTMLInputElement;
+
+      fireEvent.change($input, { target: { value: properId } });
+      fireEvent.change($inputPassword, { target: { value: improperPassword } });
+      fireEvent.change($inputConfirm, { target: { value: improperPassword } });
+
+      const $button = screen.getByRole('button', { name: buttonSignup });
+
+      expect($button).toBeDisabled();
+    });
+
+    it('비밀번호 확인이 적절하지 않다면 회원가입 버튼을 비활성화 합니다.', () => {
+      render(<SignupPage />);
+
+      const $input = screen.getByLabelText(labelId) as HTMLInputElement;
+      const $inputPassword = screen.getByLabelText(labelPassword) as HTMLInputElement;
+      const $inputConfirm = screen.getByLabelText(labelPasswordConfirm) as HTMLInputElement;
+
+      fireEvent.change($input, { target: { value: properId } });
+      fireEvent.change($inputPassword, { target: { value: properPassword } });
+      fireEvent.change($inputConfirm, { target: { value: properPassword + 'a' } });
+
+      const $button = screen.getByRole('button', { name: buttonSignup });
+
+      expect($button).toBeDisabled();
+    });
+
     it('모든 값이 적절하면 회원가입 버튼을 활성화 합니다.', () => {
       render(<SignupPage />);
 
