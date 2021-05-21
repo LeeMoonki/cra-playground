@@ -51,6 +51,7 @@ function Signup() {
             <span data-testid="password-confirm-error">입력한 비밀번호와 다릅니다.</span>
           )}
         </section>
+        <button type="submit">회원가입</button>
       </form>
     </div>
   );

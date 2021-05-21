@@ -2,6 +2,11 @@ import { screen, render, cleanup, fireEvent } from '@testing-library/react';
 import SignupPage from '../../../pages/Signup';
 
 describe('Signup page', () => {
+  const labelId = '아이디';
+  const buttonDup = '중복확인';
+  const labelPassword = '비밀번호';
+  const labelPasswordConfirm = '비밀번호 확인';
+
   afterEach(cleanup);
 
   describe('ID', () => {
@@ -23,8 +28,8 @@ describe('Signup page', () => {
       // screen은 query가 document.body에 미리 바운딩된 객체입니다.
       render(<SignupPage />);
 
-      const $input = screen.getByLabelText('아이디') as HTMLInputElement;
-      const $button = screen.getByRole('button', { name: '중복확인' });
+      const $input = screen.getByLabelText(labelId) as HTMLInputElement;
+      const $button = screen.getByRole('button', { name: buttonDup });
 
       expect($input.value).toBe('');
       expect($button).toBeDisabled();
@@ -49,7 +54,7 @@ describe('Signup page', () => {
       it('만약 적절한 형식의 비밀번호가 아니라면 비밀번호 에러를 노출합니다.', () => {
         render(<SignupPage />);
 
-        const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+        const $input = screen.getByLabelText(labelPassword) as HTMLInputElement;
 
         fireEvent.change($input, { target: { value: 'abcd' } });
 
@@ -62,7 +67,7 @@ describe('Signup page', () => {
       it('만약 적절한 형식의 비밀번호라면 비밀번호 에러를 노출하지 않습니다.', () => {
         render(<SignupPage />);
 
-        const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
+        const $input = screen.getByLabelText(labelPassword) as HTMLInputElement;
         const password = 'abcd123456678';
 
         fireEvent.change($input, { target: { value: password } });
@@ -86,8 +91,8 @@ describe('Signup page', () => {
       it('기존 비밀번호와 다르다면 에러 메세지를 노출합니다.', () => {
         render(<SignupPage />);
 
-        const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
-        const $inputConfirm = screen.getByLabelText('비밀번호 확인') as HTMLInputElement;
+        const $input = screen.getByLabelText(labelPassword) as HTMLInputElement;
+        const $inputConfirm = screen.getByLabelText(labelPasswordConfirm) as HTMLInputElement;
 
         const password = 'abcd123456678';
         const passwordConrifm = 'abcd12345667';
@@ -103,8 +108,8 @@ describe('Signup page', () => {
       it('기존 비밀번호와 같다면 에러 메세지를 노출하지 않습니다.', () => {
         render(<SignupPage />);
 
-        const $input = screen.getByLabelText('비밀번호') as HTMLInputElement;
-        const $inputConfirm = screen.getByLabelText('비밀번호 확인') as HTMLInputElement;
+        const $input = screen.getByLabelText(labelPassword) as HTMLInputElement;
+        const $inputConfirm = screen.getByLabelText(labelPasswordConfirm) as HTMLInputElement;
 
         const password = 'abcd12345667';
 
