@@ -1,5 +1,13 @@
+import { useState } from 'react';
+
 function Counter() {
-  return <div></div>;
+  const [count, setCount] = useState(0);
+
+  return (
+    <section>
+      <span data-testid="count">{count}</span>
+    </section>
+  );
 }
 
 export default Counter;
