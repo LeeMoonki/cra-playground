@@ -1,8 +1,8 @@
-const mediaQuery = (maxWidth: number) => `
+export const mediaQuery = (maxWidth: number) => `
   @media (max-width: ${maxWidth}px)
 `;
 
-const media = {
+export const media = {
   xxxlarge: mediaQuery(2200),
   xxlarge: mediaQuery(1920),
   xlarge: mediaQuery(1440),
