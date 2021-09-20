@@ -7,6 +7,7 @@ import AboutPage from './pages/About';
 import PostsPage from './pages/Posts';
 import CardsPage from './pages/Cards';
 import SignupPage from './pages/Signup';
+import ContextAPIGroundPage from './pages/ContextAPIGround';
 
 type Navigation = {
   to: string;
@@ -41,6 +42,7 @@ const NAVIGATIONS: Navigations = [
   { to: '/posts/1', name: 'Post-1' },
   { to: '/cards', name: 'Cards' },
   { to: '/signup', name: 'Signup' },
+  { to: '/context', name: 'Context' },
 ];
 
 function App() {
@@ -64,6 +66,9 @@ function App() {
       </Route>
       <Route path="/signup">
         <SignupPage />
+      </Route>
+      <Route path="/context">
+        <ContextAPIGroundPage />
       </Route>
     </div>
   );
