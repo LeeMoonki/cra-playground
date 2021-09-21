@@ -12,4 +12,6 @@ export const Header = ({ navigations }: { navigations: Navigations }) => {
 
 const header = css`
   display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
