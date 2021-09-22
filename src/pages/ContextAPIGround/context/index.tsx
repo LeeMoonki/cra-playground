@@ -2,6 +2,7 @@ import React, { FC, useContext, useState } from 'react';
 
 export const useProviderCounter = () => {
   const [count, setCount] = useState(0);
+  const [content, setContent] = useState('');
 
   const increase = () => {
     setCount(count + 1);
@@ -15,6 +16,9 @@ export const useProviderCounter = () => {
     count,
     increase,
     decrease,
+
+    content,
+    setContent,
   };
 };
 

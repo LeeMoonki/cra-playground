@@ -36,9 +36,25 @@ function ContextAPIGroundPage() {
           <Counter />
         </Floor2>
       </Floor1>
+      <Floor1>
+        <Input />
+      </Floor1>
       <CheckingRenderChild />
     </CounterContextProvider>
   );
 }
+
+const Input = () => {
+  const counter = useCounterContext();
+  console.log('render Input');
+
+  return (
+    <input
+      type="text"
+      value={counter?.content}
+      onChange={({ target: { value } }) => counter?.setContent(value)}
+    />
+  );
+};
 
 export default ContextAPIGroundPage;
