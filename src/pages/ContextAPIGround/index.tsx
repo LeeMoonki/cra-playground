@@ -1,3 +1,4 @@
+import CheckingRenderChild from '../ViewModelExample/formInputs/CheckingRenderChild';
 import React, { FC } from 'react';
 import { CounterContextProvider, useCounterContext } from './context';
 
@@ -35,6 +36,7 @@ function ContextAPIGroundPage() {
           <Counter />
         </Floor2>
       </Floor1>
+      <CheckingRenderChild />
     </CounterContextProvider>
   );
 }
