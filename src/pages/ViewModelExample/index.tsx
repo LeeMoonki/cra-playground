@@ -1,12 +1,19 @@
 import React from 'react';
+import CheckingRenderChild from './formInputs/CheckingRenderChild';
+import Preview from './formInputs/Preview';
 import TitleAndContent from './formInputs/TitleAndContent';
+import { useProvideViewModel, ViewModelContext } from './formInputs/ViewModel';
 
-function ViewModelExample() {
+function ViewModelExamplePage() {
   return (
     <>
-      <TitleAndContent />
+      <ViewModelContext.Provider value={useProvideViewModel()}>
+        <TitleAndContent />
+        <Preview />
+        <CheckingRenderChild />
+      </ViewModelContext.Provider>
     </>
   );
 }
 
-export default ViewModelExample;
+export default ViewModelExamplePage;
