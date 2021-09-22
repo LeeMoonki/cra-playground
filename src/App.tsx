@@ -9,6 +9,7 @@ import PostsPage from './pages/Posts';
 import CardsPage from './pages/Cards';
 import SignupPage from './pages/Signup';
 import ContextAPIGroundPage from './pages/ContextAPIGround';
+import ViewModelExamplePage from './pages/ViewModelExample';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -17,6 +18,7 @@ const NAVIGATIONS: Navigations = [
   { to: '/cards', name: 'Cards' },
   { to: '/signup', name: 'Signup' },
   { to: '/context', name: 'Context' },
+  { to: '/viewmodelexmaple', name: 'ViewModel Example' },
 ];
 
 function App() {
@@ -40,6 +42,9 @@ function App() {
       </Route>
       <Route path="/context">
         <ContextAPIGroundPage />
+      </Route>
+      <Route path="/viewmodelexmaple">
+        <ViewModelExamplePage />
       </Route>
     </div>
   );
