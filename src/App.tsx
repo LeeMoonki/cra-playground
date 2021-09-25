@@ -9,7 +9,9 @@ import PostsPage from './pages/Posts';
 import CardsPage from './pages/Cards';
 import SignupPage from './pages/Signup';
 import ContextAPIGroundPage from './pages/ContextAPIGround';
+import ContextAPIGroundWithDispatchPage from './pages/ContextAPIGroundWithDispatch';
 import ViewModelExamplePage from './pages/ViewModelExample';
+import ReRenderingPage from './pages/ReRendering';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -17,8 +19,10 @@ const NAVIGATIONS: Navigations = [
   { to: '/posts/1', name: 'Post-1' },
   { to: '/cards', name: 'Cards' },
   { to: '/signup', name: 'Signup' },
-  { to: '/context', name: 'Context' },
+  { to: '/context', name: 'Context with useState hook' },
+  { to: '/contextdispatch', name: 'Context with dispatch' },
   { to: '/viewmodelexmaple', name: 'ViewModel Example' },
+  { to: '/rerendering', name: 'Re Rendering Ground' },
 ];
 
 function App() {
@@ -43,8 +47,14 @@ function App() {
       <Route path="/context">
         <ContextAPIGroundPage />
       </Route>
+      <Route path="/contextdispatch">
+        <ContextAPIGroundWithDispatchPage />
+      </Route>
       <Route path="/viewmodelexmaple">
         <ViewModelExamplePage />
+      </Route>
+      <Route path="/rerendering">
+        <ReRenderingPage />
       </Route>
     </div>
   );
