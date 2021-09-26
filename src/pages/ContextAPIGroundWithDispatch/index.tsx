@@ -71,6 +71,8 @@ const CounterContextProvider: FC = ({ children }) => {
 // pages/ContextAPIGround와 같은 예제를 useReducer 버전으로 작성
 // 둘 간의 차이는 없고 다음과 같은 공통 현상 발견
 // 1. ContextAPIGroundWithDispatchPage에서 useReducer와 CounterContext.Provider를 사용하면 dispatch마다 Floor 랜더링이 된다.
+// (https://stackoverflow.com/questions/65638750/react-context-provider-all-children-re-rendering)
+// (https://frontarm.com/james-k-nelson/react-context-performance/)
 // 2. 지금처럼 CounterContextProvider를 별도로 분리하고 children을 받으면 dispatch에서 Floor 랜더링이 안 된다.
 // 3. Counter의 Floor와 같은 레벨에 Input에 대한 Floor를 두면 Counter와 Input의 업데이트마다 다른 컴포넌트와 Floor 모두 랜더링 된다.
 
