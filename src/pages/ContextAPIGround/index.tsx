@@ -27,6 +27,7 @@ const Counter: FC = () => {
   );
 };
 
+// 이 예제를 useReducer 버전으로 보려면 CountextAPIGroundWithDispatch 참고
 function ContextAPIGroundPage() {
   console.log('render ContextAPIGroundPage');
   return (
