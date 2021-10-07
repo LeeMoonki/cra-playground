@@ -12,6 +12,7 @@ import ContextAPIGroundPage from './pages/ContextAPIGround';
 import ContextAPIGroundWithDispatchPage from './pages/ContextAPIGroundWithDispatch';
 import ViewModelExamplePage from './pages/ViewModelExample';
 import ReRenderingPage from './pages/ReRendering';
+import HookPage from './pages/Hook';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -23,6 +24,7 @@ const NAVIGATIONS: Navigations = [
   { to: '/contextdispatch', name: 'Context with dispatch' },
   { to: '/viewmodelexmaple', name: 'ViewModel Example' },
   { to: '/rerendering', name: 'Re Rendering Ground' },
+  { to: '/hook', name: 'Hook page' },
 ];
 
 function App() {
@@ -55,6 +57,9 @@ function App() {
       </Route>
       <Route path="/rerendering">
         <ReRenderingPage />
+      </Route>
+      <Route path="/hook">
+        <HookPage />
       </Route>
     </div>
   );
