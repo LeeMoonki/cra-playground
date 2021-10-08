@@ -1,15 +1,23 @@
 import React, { useMemo, useRef, useState } from 'react';
 
 const useFoo = (init: string, value: string) => {
-  console.log('useFoo ', init);
-  const r = useRef('r');
+  const r = useRef(value);
   const [count, setCount] = useState(0);
   const [content, setContent] = useState(init);
 
-  const m = useMemo(() => {
-    console.log('memo가 동작 !', value);
-    return value + 'bar';
+  const m1 = useMemo(() => {
+    console.log('memo1이 동작 !', init);
+    return init + 'bar1';
+  }, [init]);
+
+  const m2 = useMemo(() => {
+    console.log('memo2가 동작 !', value);
+    return value + 'bar2';
   }, [value]);
+
+  console.log('useFoo init : ', init);
+  console.log('useFoo ref : ', r.current);
+  console.log('useFoo memo : ', m1, m2);
 
   return {
     r,
@@ -17,18 +25,22 @@ const useFoo = (init: string, value: string) => {
     setCount,
     content,
     setContent,
-    m,
+    m1,
+    m2,
   };
 };
 
 function HookPage() {
   const [text, setText] = useState('');
-  const hookValues = useFoo('foo init', 'text');
+  const hookValues = useFoo('foo init', text);
 
   return (
     <div>
       <input type="text" value={text} onChange={({ target: { value } }) => setText(value)} />
-      <span>m : {hookValues.m}</span>
+      <br />
+      <span>
+        m : {hookValues.m1} {hookValues.m2}
+      </span>
     </div>
   );
 }
