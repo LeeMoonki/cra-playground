@@ -37,6 +37,7 @@ module.exports = {
         'eqeqeq': 'off',
 
         'react/prop-types': 'off',
+        'react/display-name': 'off',
       },
     }
   ]

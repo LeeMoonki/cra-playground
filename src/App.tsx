@@ -13,6 +13,7 @@ import ContextAPIGroundWithDispatchPage from './pages/ContextAPIGroundWithDispat
 import ViewModelExamplePage from './pages/ViewModelExample';
 import ReRenderingPage from './pages/ReRendering';
 import HookPage from './pages/Hook';
+import ForwardRefPage from './pages/ForwardRef';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -25,6 +26,7 @@ const NAVIGATIONS: Navigations = [
   { to: '/viewmodelexmaple', name: 'ViewModel Example' },
   { to: '/rerendering', name: 'Re Rendering Ground' },
   { to: '/hook', name: 'Hook page' },
+  { to: '/forwardref', name: 'ForwardRef page' },
 ];
 
 function App() {
@@ -60,6 +62,9 @@ function App() {
       </Route>
       <Route path="/hook">
         <HookPage />
+      </Route>
+      <Route path="/forwardref">
+        <ForwardRefPage />
       </Route>
     </div>
   );
