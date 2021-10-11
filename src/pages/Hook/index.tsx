@@ -1,5 +1,15 @@
 import React, { useMemo, useRef, useState } from 'react';
 
+const useCustom = (text: string) => {
+  console.log('call time : ', text);
+
+  return text;
+};
+
+const useCustom1 = () => {
+  console.log('call time1');
+};
+
 const useFoo = (init: string, value: string) => {
   const r = useRef(value);
   const [count, setCount] = useState(0);
@@ -33,6 +43,8 @@ const useFoo = (init: string, value: string) => {
 function HookPage() {
   const [text, setText] = useState('');
   const hookValues = useFoo('foo init', text);
+  useCustom(text);
+  useCustom1();
 
   return (
     <div>
