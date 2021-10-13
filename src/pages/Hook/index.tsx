@@ -10,6 +10,14 @@ const useCustom1 = () => {
   console.log('call time1');
 };
 
+const useCustom2 = (text: string) => {
+  if (text === 'foo') {
+    console.log('is foo');
+    return;
+  }
+  console.log('not foo');
+};
+
 const useFoo = (init: string, value: string) => {
   const r = useRef(value);
   const [count, setCount] = useState(0);
@@ -45,6 +53,7 @@ function HookPage() {
   const hookValues = useFoo('foo init', text);
   useCustom(text);
   useCustom1();
+  useCustom2(text);
 
   return (
     <div>

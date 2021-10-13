@@ -14,6 +14,8 @@ import ViewModelExamplePage from './pages/ViewModelExample';
 import ReRenderingPage from './pages/ReRendering';
 import HookPage from './pages/Hook';
 import ForwardRefPage from './pages/ForwardRef';
+import TimeoutAndUseRefProblemPage from './pages/TimeoutAndUseRef/problem';
+import TimeoutAndUseRefResolvedPage from './pages/TimeoutAndUseRef/resolved';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -27,6 +29,8 @@ const NAVIGATIONS: Navigations = [
   { to: '/rerendering', name: 'Re Rendering Ground' },
   { to: '/hook', name: 'Hook page' },
   { to: '/forwardref', name: 'ForwardRef page' },
+  { to: '/timeoutref-problem', name: 'Timeout and useRef (Problem)' },
+  { to: '/timeoutref-resolved', name: 'Timeout and useRef (resolved)' },
 ];
 
 function App() {
@@ -65,6 +69,12 @@ function App() {
       </Route>
       <Route path="/forwardref">
         <ForwardRefPage />
+      </Route>
+      <Route path="/timeoutref-problem">
+        <TimeoutAndUseRefProblemPage />
+      </Route>
+      <Route path="/timeoutref-resolved">
+        <TimeoutAndUseRefResolvedPage />
       </Route>
     </div>
   );
