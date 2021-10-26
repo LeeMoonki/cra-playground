@@ -16,6 +16,7 @@ import HookPage from './pages/Hook';
 import ForwardRefPage from './pages/ForwardRef';
 import TimeoutAndUseRefProblemPage from './pages/TimeoutAndUseRef/problem';
 import TimeoutAndUseRefResolvedPage from './pages/TimeoutAndUseRef/resolved';
+import RecoilGroundPage from './pages/RecoilGround';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -31,6 +32,7 @@ const NAVIGATIONS: Navigations = [
   { to: '/forwardref', name: 'ForwardRef page' },
   { to: '/timeoutref-problem', name: 'Timeout and useRef (Problem)' },
   { to: '/timeoutref-resolved', name: 'Timeout and useRef (resolved)' },
+  { to: '/recoil', name: 'Recoil Ground' },
 ];
 
 function App() {
@@ -75,6 +77,9 @@ function App() {
       </Route>
       <Route path="/timeoutref-resolved">
         <TimeoutAndUseRefResolvedPage />
+      </Route>
+      <Route path="/recoil">
+        <RecoilGroundPage />
       </Route>
     </div>
   );
