@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -7,6 +8,14 @@ import './css/reset.css';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+if (
+  !new (class {
+    x: any;
+  })().hasOwnProperty('x')
+) {
+  throw new Error('Transpiler is not configured correctly');
+}
 
 ReactDOM.render(
   <React.StrictMode>

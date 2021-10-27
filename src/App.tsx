@@ -18,6 +18,7 @@ import TimeoutAndUseRefProblemPage from './pages/TimeoutAndUseRef/problem';
 import TimeoutAndUseRefResolvedPage from './pages/TimeoutAndUseRef/resolved';
 import RecoilGroundPage from './pages/RecoilGround';
 import ReduxGroundPage from './pages/ReduxGround';
+import MobsGroundPage from './pages/MobxGround';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -35,6 +36,7 @@ const NAVIGATIONS: Navigations = [
   { to: '/timeoutref-resolved', name: 'Timeout and useRef (resolved)' },
   { to: '/recoil', name: 'Recoil Ground' },
   { to: '/redux', name: 'Redux Ground' },
+  { to: '/mobx', name: 'Mobx Ground' },
 ];
 
 function App() {
@@ -85,6 +87,9 @@ function App() {
       </Route>
       <Route path="/redux">
         <ReduxGroundPage />
+      </Route>
+      <Route path="/mobx">
+        <MobsGroundPage />
       </Route>
     </div>
   );
