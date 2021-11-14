@@ -19,6 +19,7 @@ import TimeoutAndUseRefResolvedPage from './pages/TimeoutAndUseRef/resolved';
 import RecoilGroundPage from './pages/RecoilGround';
 import ReduxGroundPage from './pages/ReduxGround';
 import MobsGroundPage from './pages/MobxGround';
+import ReactDOMPage from './pages/ReactDOM';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -37,6 +38,7 @@ const NAVIGATIONS: Navigations = [
   { to: '/recoil', name: 'Recoil Ground' },
   { to: '/redux', name: 'Redux Ground' },
   { to: '/mobx', name: 'Mobx Ground' },
+  { to: '/reactdom', name: 'ReactDOM' },
 ];
 
 function App() {
@@ -90,6 +92,9 @@ function App() {
       </Route>
       <Route path="/mobx">
         <MobsGroundPage />
+      </Route>
+      <Route path="/reactdom">
+        <ReactDOMPage />
       </Route>
     </div>
   );
