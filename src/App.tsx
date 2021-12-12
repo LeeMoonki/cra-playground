@@ -20,6 +20,7 @@ import RecoilGroundPage from './pages/RecoilGround';
 import ReduxGroundPage from './pages/ReduxGround';
 import MobsGroundPage from './pages/MobxGround';
 import ReactDOMPage from './pages/ReactDOM';
+import InputPage from './pages/Input';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -39,6 +40,7 @@ const NAVIGATIONS: Navigations = [
   { to: '/redux', name: 'Redux Ground' },
   { to: '/mobx', name: 'Mobx Ground' },
   { to: '/reactdom', name: 'ReactDOM' },
+  { to: '/input', name: 'Input' },
 ];
 
 function App() {
@@ -95,6 +97,9 @@ function App() {
       </Route>
       <Route path="/reactdom">
         <ReactDOMPage />
+      </Route>
+      <Route path="/input">
+        <InputPage />
       </Route>
     </div>
   );

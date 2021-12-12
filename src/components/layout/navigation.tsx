@@ -27,6 +27,8 @@ export function Nav({ navigations }: { navigations: Navigations }) {
 }
 const nav = css`
   display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 
   & > li:nth-of-type(n + 2) {
     margin-left: 0.5rem;
