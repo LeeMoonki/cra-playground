@@ -21,6 +21,7 @@ import ReduxGroundPage from './pages/ReduxGround';
 import MobsGroundPage from './pages/MobxGround';
 import ReactDOMPage from './pages/ReactDOM';
 import InputPage from './pages/Input';
+import MemorizingPage from './pages/Memorizing';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -41,6 +42,7 @@ const NAVIGATIONS: Navigations = [
   { to: '/mobx', name: 'Mobx Ground' },
   { to: '/reactdom', name: 'ReactDOM' },
   { to: '/input', name: 'Input' },
+  { to: '/memorizing', name: 'Memorizing' },
 ];
 
 function App() {
@@ -100,6 +102,9 @@ function App() {
       </Route>
       <Route path="/input">
         <InputPage />
+      </Route>
+      <Route path="/memorizing">
+        <MemorizingPage />
       </Route>
     </div>
   );
