@@ -22,6 +22,8 @@ import MobsGroundPage from './pages/MobxGround';
 import ReactDOMPage from './pages/ReactDOM';
 import InputPage from './pages/Input';
 import MemorizingPage from './pages/Memorizing';
+import ReactHookFormPage from './pages/ReactHookForm';
+import ReactQueryPage from './pages/ReactQuery';
 
 const NAVIGATIONS: Navigations = [
   { to: '/', name: 'Home' },
@@ -43,6 +45,8 @@ const NAVIGATIONS: Navigations = [
   { to: '/reactdom', name: 'ReactDOM' },
   { to: '/input', name: 'Input' },
   { to: '/memorizing', name: 'Memorizing' },
+  { to: '/hookform', name: 'ReactHookForm' },
+  { to: '/query', name: 'ReactQuery' },
 ];
 
 function App() {
@@ -105,6 +109,12 @@ function App() {
       </Route>
       <Route path="/memorizing">
         <MemorizingPage />
+      </Route>
+      <Route path="/hookform">
+        <ReactHookFormPage />
+      </Route>
+      <Route path="/query">
+        <ReactQueryPage />
       </Route>
     </div>
   );
